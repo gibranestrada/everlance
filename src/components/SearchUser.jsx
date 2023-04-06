@@ -12,6 +12,7 @@ const SearchUser = () => {
   const handleSearchChange = (e) => {
     setUser(e.target.value);
     setEnableFetch(false);
+    setPerPage(12);
   };
 
   const handleFormSubmit = (e) => {
@@ -26,10 +27,15 @@ const SearchUser = () => {
         `https://api.github.com/search/users?q=${user}&page=1&per_page=${perPage}`
       ).then((res) => res.json()),
     enabled: !!user && !!enableFetch,
+    keepPreviousData: true,
   });
 
   const handleViewProfileClick = (profileInfo) => {
     //setProfile(profileInfo);
+  };
+
+  const handleLoadMoreClick = () => {
+    setPerPage((s) => s + 12);
   };
 
   if (isError) return <span>Error: {error.message}</span>;
@@ -88,7 +94,14 @@ const SearchUser = () => {
               </div>
             ))}
           </section>
-          <section className="w-128">!</section>
+          <section className="w-128 flex justify-end">
+            <button
+              className="border-2 rounded-md p-2 pr-4 pl-4 font-semibold"
+              onClick={handleLoadMoreClick}
+            >
+              Load more
+            </button>
+          </section>
         </>
       )}
     </>
