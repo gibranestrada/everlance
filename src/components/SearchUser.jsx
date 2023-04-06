@@ -1,11 +1,13 @@
 import { useState } from "react";
 import SearchIcon from "../assets/search-icon.svg";
+import GithubIcon from "../assets/github-icon.svg";
 import { useQuery } from "@tanstack/react-query";
 
 const SearchUser = () => {
   const [user, setUser] = useState("");
   const [perPage, setPerPage] = useState(12);
   const [enableFetch, setEnableFetch] = useState(false);
+  const [profile, setProfile] = useState([]);
 
   const handleSearchChange = (e) => {
     setUser(e.target.value);
@@ -25,6 +27,10 @@ const SearchUser = () => {
       ).then((res) => res.json()),
     enabled: !!user && !!enableFetch,
   });
+
+  const handleViewProfileClick = (profileInfo) => {
+    //setProfile(profileInfo);
+  };
 
   if (isError) return <span>Error: {error.message}</span>;
   console.log(data);
@@ -54,16 +60,30 @@ const SearchUser = () => {
       ) : (
         <>
           <section className="w-128 grid grid-cols-3 gap-7">
-            {data?.items.map((user) => (
-              <div key={user.id} className="border-2 rounded-xl p-4 pl-6 h-32">
+            {data?.items?.map((user) => (
+              <div
+                key={user.id}
+                className="border-2 rounded-xl p-4 pl-6 h-32 gap-4 grid grid-cols-1"
+              >
                 <div className="flex gap-4 items-center">
                   <img
                     className="rounded-full"
                     src={`${user.avatar_url}`}
-                    width="60"
+                    width="55"
                     alt="user-avatar"
                   />
                   <span>{user.login}</span>
+                </div>
+                <div className="flex justify-between">
+                  <a href={user?.html_url} target="_blank" rel="noreferrer">
+                    <img src={GithubIcon} alt="Github icon" />
+                  </a>
+                  <button
+                    className="text-emerald-600"
+                    onClick={handleViewProfileClick(user)}
+                  >
+                    View profile
+                  </button>
                 </div>
               </div>
             ))}
