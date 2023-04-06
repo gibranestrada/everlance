@@ -19,8 +19,3 @@ code {
 * {
   box-sizing: border-box;
 }
-img .search-icon {
-  position: absolute;
-  left: 60%;
-  margin-left: 20px;
-}
