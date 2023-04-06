@@ -9,7 +9,7 @@ const SearchUser = () => {
 
   const handleSearchChange = (e) => {
     setUser(e.target.value);
-    setPerPage(false);
+    setEnableFetch(false);
   };
 
   const handleFormSubmit = (e) => {
@@ -27,7 +27,7 @@ const SearchUser = () => {
   });
 
   if (isError) return <span>Error: {error.message}</span>;
-
+  console.log(data);
   return (
     <>
       <section className="w-128 flex justify-between">
@@ -52,9 +52,25 @@ const SearchUser = () => {
       {isLoading && isFetching ? (
         <span>"Loading..."</span>
       ) : (
-        <section className="w-128">world</section>
+        <>
+          <section className="w-128 grid grid-cols-3 gap-7">
+            {data?.items.map((user) => (
+              <div key={user.id} className="border-2 rounded-xl p-4 pl-6 h-32">
+                <div className="flex gap-4 items-center">
+                  <img
+                    className="rounded-full"
+                    src={`${user.avatar_url}`}
+                    width="60"
+                    alt="user-avatar"
+                  />
+                  <span>{user.login}</span>
+                </div>
+              </div>
+            ))}
+          </section>
+          <section className="w-128">!</section>
+        </>
       )}
-      <section className="w-128">!</section>
     </>
   );
 };
