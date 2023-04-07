@@ -13,9 +13,9 @@ const SearchUser = ({ setEnableFetch, setPerPage, setUser }) => {
   };
 
   return (
-    <section className="max-w-cardMax flex justify-between">
+    <section className="grid grid-cols-2 justify-between  max-w-cardMax w-full">
       <p className="font-semibold text-xl">GitHub Users</p>
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-self-end">
         <img
           className="search-icon"
           src={SearchIcon}

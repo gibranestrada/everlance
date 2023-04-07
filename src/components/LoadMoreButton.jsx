@@ -4,7 +4,7 @@ const LoadMoreButton = ({ data, setPerPage }) => {
   };
   if (data?.items?.length === data?.total_count) return <></>;
   return (
-    <section className="max-w-cardMax flex justify-end">
+    <section className="flex justify-end w-full max-w-cardMax">
       <button
         className="border-2 rounded-md p-2 pr-4 pl-4 font-semibold"
         onClick={handleLoadMoreClick}

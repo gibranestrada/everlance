@@ -19,14 +19,14 @@ const App = () => {
   });
 
   if (isError) return <span>Error: {error.message}</span>;
-  console.log(profileName);
+
   return (
-    <div className="App">
-      <header className="App-nav drop-shadow-md border-b-4">
+    <div className="w-screen flex flex-col">
+      <header className="drop-shadow-md border-b-4">
         <nav className="p-6 pl-7 font-semibold">Everlance Inc.</nav>
       </header>
       {profileName.length === 0 ? (
-        <div className="grid justify-center p-3 pt-12 gap-8 pb-8">
+        <div className="grid justify-center p-3 pt-12 gap-8 pb-8 w-screen">
           <SearchUser
             setEnableFetch={setEnableFetch}
             setPerPage={setPerPage}

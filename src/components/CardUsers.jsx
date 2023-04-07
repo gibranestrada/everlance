@@ -8,11 +8,11 @@ const CardUsers = ({ data, setProfileName, isLoading, isFetching }) => {
   if (isLoading && isFetching) return <span>"Loading..."</span>;
 
   return (
-    <section className="max-w-cardMax grid grid-cols-3 gap-7">
+    <section className="grid grid-cols-3 gap-7 w-full max-w-usersMax">
       {data?.items?.map((user) => (
         <div
           key={user.id}
-          className="border-2 rounded-xl p-4 pl-6 h-32 gap-4 grid grid-cols-1"
+          className="border-2 rounded-xl p-4 pl-6 h-32 gap-4 grid grid-cols-1 w-80"
         >
           <div className="flex gap-4 items-center">
             <img
