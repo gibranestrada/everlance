@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: { width: { 128: "60rem" } },
+    extend: { width: { 128: "60rem" }, maxWidth: { cardMax: "65rem" } },
   },
   plugins: [],
 };

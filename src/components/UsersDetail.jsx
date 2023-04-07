@@ -12,7 +12,7 @@ const UsersDetail = ({ profileName, setProfileName }) => {
 
   return (
     <div onClick={() => setProfileName("")} className="grid p-4 pt-10 pb-10">
-      <div className="flex gap-9 w-128 border-2 rounded-lg p-11">
+      <div className="flex gap-9 max-w-maxCard border-2 rounded-lg p-11">
         <div>
           <img
             className="rounded-full"
@@ -22,14 +22,14 @@ const UsersDetail = ({ profileName, setProfileName }) => {
             alt="user-avatar"
           />
         </div>
-        <div className="mt-6 w-80">
+        <div className="mt-5 w-80">
           <p className="text-2xl font-medium pb-2">{data?.name}</p>
           <p className="pb-3">{data?.login}</p>
           <p className="pb-14">{data?.bio} dksafja sdkfkds skfkd dkfdk </p>
           <p className="pb-3">{data?.location}</p>
           <p>{data?.email}</p>
         </div>
-        <div className="ml-12">
+        <div className="mt-5 ml-12">
           <div className="flex gap-2">
             <img src={GithubIcon} alt="Github icon" />
             <span>{`${firstName}${isMissingS}github`.toLowerCase()}</span>
