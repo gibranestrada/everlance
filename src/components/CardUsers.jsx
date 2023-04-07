@@ -1,8 +1,8 @@
 import GithubIcon from "../assets/github-icon.svg";
 
-const CardUsers = ({ data, setProfile, isLoading, isFetching }) => {
+const CardUsers = ({ data, setProfileName, isLoading, isFetching }) => {
   const handleViewProfileClick = (profileInfo) => {
-    setProfile(profileInfo);
+    setProfileName(profileInfo);
   };
 
   if (isLoading && isFetching) return <span>"Loading..."</span>;
@@ -29,7 +29,7 @@ const CardUsers = ({ data, setProfile, isLoading, isFetching }) => {
             </a>
             <button
               className="text-emerald-600"
-              onClick={() => handleViewProfileClick(user)}
+              onClick={() => handleViewProfileClick(user?.login)}
             >
               View profile
             </button>

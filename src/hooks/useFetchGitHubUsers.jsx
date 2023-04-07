@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 const useFetchGitHubUsers = ({ user, perPage, enableFetch }) => {
-  console.log(user, perPage, enableFetch);
   const { isLoading, isError, data, error, isFetching } = useQuery({
     queryKey: ["repoData", user, perPage, enableFetch],
     queryFn: () =>
