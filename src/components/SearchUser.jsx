@@ -31,7 +31,7 @@ const SearchUser = () => {
   });
 
   const handleViewProfileClick = (profileInfo) => {
-    //setProfile(profileInfo);
+    setProfile(profileInfo);
   };
 
   const handleLoadMoreClick = () => {
@@ -39,6 +39,8 @@ const SearchUser = () => {
   };
 
   if (isError) return <span>Error: {error.message}</span>;
+
+  if (profile.length) return <></>;
   console.log(data);
   return (
     <>
@@ -86,7 +88,7 @@ const SearchUser = () => {
                   </a>
                   <button
                     className="text-emerald-600"
-                    onClick={handleViewProfileClick(user)}
+                    onClick={() => handleViewProfileClick(user)}
                   >
                     View profile
                   </button>
@@ -94,14 +96,16 @@ const SearchUser = () => {
               </div>
             ))}
           </section>
-          <section className="w-128 flex justify-end">
-            <button
-              className="border-2 rounded-md p-2 pr-4 pl-4 font-semibold"
-              onClick={handleLoadMoreClick}
-            >
-              Load more
-            </button>
-          </section>
+          {data?.items?.length !== data?.total_count && (
+            <section className="w-128 flex justify-end">
+              <button
+                className="border-2 rounded-md p-2 pr-4 pl-4 font-semibold"
+                onClick={handleLoadMoreClick}
+              >
+                Load more
+              </button>
+            </section>
+          )}
         </>
       )}
     </>
